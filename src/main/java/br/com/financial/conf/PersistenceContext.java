@@ -5,11 +5,11 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -27,12 +27,47 @@ public class PersistenceContext {
 //	The method that configures the datasource bean looks as follows:
 	
 	@Bean(destroyMethod = "close")
-	DataSource dataSource(Environment env) {
-		final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
-		dsLookup.setResourceRef(true);
-		DataSource dataSource = dsLookup.getDataSource("jdbc/financial");
-		return dataSource;
+	public DataSource mainDataSource(Environment env) {
+
+		String userName = System.getProperty("RDS_USERNAME");
+		String password = System.getProperty("RDS_PASSWORD");
+		String hostname = System.getProperty("RDS_HOSTNAME");
+		String port = System.getProperty("RDS_PORT");
+
+		if (hostname == null || hostname.trim().isEmpty())
+			hostname = "localhost";
+
+		if (port == null || port.trim().isEmpty())
+			port = "5432";
+
+		if (userName == null || userName.trim().isEmpty())
+			userName = "postgres";
+
+		if (password == null || password.trim().isEmpty())
+			password = "postgres";
+
+		String jdbcUrl = "jdbc:postgresql://" + hostname + ":" + port + "/financial";
+
+		BasicDataSource ds = new BasicDataSource();
+		ds.setDriverClassName("org.postgresql.Driver");
+		ds.setUrl(jdbcUrl);
+		ds.setUsername(userName);
+		ds.setPassword(password);
+		ds.setValidationQuery("select current_date");
+		ds.setRemoveAbandoned(true);
+		ds.setRemoveAbandonedTimeout(30);
+		ds.setLogAbandoned(true);
+
+		return ds;
 	}
+	
+//	@Bean(destroyMethod = "close")
+//	DataSource dataSource(Environment env) {
+//		final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
+//		dsLookup.setResourceRef(true);
+//		DataSource dataSource = dsLookup.getDataSource("jdbc/financial");
+//		return dataSource;
+//	}
 	
 //	The method that configures the entity manager factory bean looks as follows:
 	@Bean
