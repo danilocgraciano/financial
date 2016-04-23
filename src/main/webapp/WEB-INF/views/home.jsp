@@ -1,14 +1,13 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-App="financial" lang="en">
 <head>
-	<title>Home</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="static/js/lib/setup.js"></script>
+<!-- <script src="static/js/app.js"></script> -->
+
+<title>.:FINANCIAL:.</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+<div ng-view></div>
 </body>
 </html>
