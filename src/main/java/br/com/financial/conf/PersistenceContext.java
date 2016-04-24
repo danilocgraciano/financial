@@ -80,8 +80,8 @@ public class PersistenceContext {
 		Properties jpaProperties = new Properties();
 		
 		jpaProperties.put("hibernate.dialect","org.hibernate.dialect.PostgreSQLDialect");
-//		jpaProperties.put("hibernate.hbm2ddl.auto","update");
-		jpaProperties.put("hibernate.hbm2ddl.auto","create-drop");
+		jpaProperties.put("hibernate.hbm2ddl.auto","update");
+//		jpaProperties.put("hibernate.hbm2ddl.auto","create-drop");
 		jpaProperties.put("hibernate.ejb.naming_strategy","org.hibernate.cfg.ImprovedNamingStrategy");
 //		jpaProperties.put("hibernate.show_sql","true");
 //		jpaProperties.put("hibernate.format_sql","true");
