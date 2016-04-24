@@ -21,15 +21,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/api/tipos")
-public class TipoController {
+public class TipoController extends BaseController{
 
     @Autowired
     TipoRepository repository;
-
-    public ResponseEntity<String> handleException( Exception e ){
-
-        return new ResponseEntity<String>(String.format("{\"reason\":\"%s\"}", e.getMessage()), HttpStatus.NOT_ACCEPTABLE);
-    }
 
     @RequestMapping(method = RequestMethod.POST)
     public Tipo create( @RequestBody @Valid Tipo tipo ) throws Exception{

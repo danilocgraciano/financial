@@ -17,15 +17,10 @@ import br.com.financial.repository.TituloRepository;
 
 @RestController
 @RequestMapping("/api/titulos")
-public class TituloController {
+public class TituloController extends BaseController{
 
     @Autowired
     TituloRepository repository;
-
-    public ResponseEntity<String> handleException( Exception e ){
-
-        return new ResponseEntity<String>(String.format("{\"reason\":\"%s\"}", e.getMessage()), HttpStatus.NOT_ACCEPTABLE);
-    }
 
     @RequestMapping(method = RequestMethod.POST)
     public Titulo create( @RequestBody @Valid Titulo titulo ) throws Exception{

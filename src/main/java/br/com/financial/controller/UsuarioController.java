@@ -21,22 +21,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/api/usuarios")
-public class UsuarioController {
+public class UsuarioController extends BaseController{
 
     @Autowired
     UsuarioRepository repository;
-
-    public ResponseEntity<String> handleException( Exception e ){
-
-        return new ResponseEntity<String>(String.format("{\"reason\":\"%s\"}", e.getMessage()), HttpStatus.NOT_ACCEPTABLE);
-    }
 
     @RequestMapping(method = RequestMethod.POST)
     public Usuario create( @RequestBody @Valid Usuario usuario ) throws Exception{
 
         List<Usuario> list = repository.findByEmail(usuario.getEmail());
         if ( !list.isEmpty() ){
-            throw new Exception("Email (" + usuario.getEmail() + ")já utilizado!");
+            throw new Exception("Email (" + usuario.getEmail() + ") já utilizado!");
         }
 
         return repository.save(usuario);

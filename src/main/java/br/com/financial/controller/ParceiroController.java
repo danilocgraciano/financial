@@ -17,15 +17,10 @@ import br.com.financial.repository.ParceiroRepository;
 
 @RestController
 @RequestMapping("/api/parceiros")
-public class ParceiroController {
+public class ParceiroController extends BaseController{
 
     @Autowired
     ParceiroRepository repository;
-
-    public ResponseEntity<String> handleException( Exception e ){
-
-        return new ResponseEntity<String>(String.format("{\"reason\":\"%s\"}", e.getMessage()), HttpStatus.NOT_ACCEPTABLE);
-    }
 
     @RequestMapping(method = RequestMethod.POST)
     public Parceiro create( @RequestBody @Valid Parceiro parceiro ) throws Exception{
@@ -50,7 +45,7 @@ public class ParceiroController {
 
         return repository.save(parceiro);
     }
-    
+
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public ResponseEntity<Boolean> delete( @PathVariable("id") Long id ){
 
