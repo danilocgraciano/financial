@@ -3,7 +3,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script src="static/js/lib/setup.js"></script>
-<!-- <script src="static/js/app.js"></script> -->
+
+<script src="static/js/app/components/login/login.js"></script>
+<script src="static/js/app/components/usuario/usuario.js"></script>
+<script src="static/js/app/app.module.js"></script>
 
 <title>.:FINANCIAL:.</title>
 </head>
