@@ -35,7 +35,7 @@ app.controller('UserListController', function($scope,UserFactory){
 	
 	$scope.remove = function(data){
 		
-		var resp = confirm('Confirm delete? ['+data.nome+']');
+		var resp = confirm('Confirm delete? ['+data.name+']');
 		if (resp == true) {
 			UserFactory.remove({ userId: data.id }).$promise.then(function(data) {
 				load();
