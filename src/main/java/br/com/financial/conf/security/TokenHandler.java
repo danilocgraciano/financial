@@ -11,14 +11,14 @@ import java.util.Date;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
-import br.com.financial.model.Usuario;
+import br.com.financial.model.User;
 
 public class TokenHandler {
     
     public static final String APP_WEB_ID = "financial_web";
     public static final String SECRET_KEY = "FINANCIAL_SECRET";
 
-    public String create(String id, Usuario usuario, long ttlMin) {
+    public String create(String id, User user, long ttlMin) {
 
         // The JWT signature algorithm we will be using to sign the token
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
@@ -31,7 +31,7 @@ public class TokenHandler {
         Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
 
         // Let's set the JWT Claims
-        JwtBuilder builder = Jwts.builder().setId(id).setIssuedAt(now).setSubject(usuario.getEmail()).signWith(signatureAlgorithm, signingKey).claim("senha", usuario.getSenha());
+        JwtBuilder builder = Jwts.builder().setId(id).setIssuedAt(now).setSubject(user.getEmail()).signWith(signatureAlgorithm, signingKey).claim("password", user.getPassword());
 
         // if it has been specified, let's add the expiration
         if (ttlMin >= 0) {

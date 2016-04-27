@@ -10,15 +10,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import br.com.financial.repository.UsuarioRepository;
-
 public class TokenInterceptor extends HandlerInterceptorAdapter {
-
-    @Autowired
-    UsuarioRepository repository;
 
     @Override
     public boolean preHandle( HttpServletRequest request , HttpServletResponse response , Object handler ) throws Exception{

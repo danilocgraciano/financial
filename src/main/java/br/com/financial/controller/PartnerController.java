@@ -12,38 +12,38 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.financial.model.Titulo;
-import br.com.financial.repository.TituloRepository;
+import br.com.financial.model.Partner;
+import br.com.financial.repository.PartnerRepository;
 
 @RestController
-@RequestMapping("/api/titulos")
-public class TituloController extends BaseController{
+@RequestMapping("/api/partners")
+public class PartnerController extends BaseController {
 
     @Autowired
-    TituloRepository repository;
+    PartnerRepository repository;
 
     @RequestMapping(method = RequestMethod.POST)
-    public Titulo create( @RequestBody @Valid Titulo titulo ) throws Exception{
+    public Partner create( @RequestBody @Valid Partner partner ) throws Exception{
 
-        return repository.save(titulo);
+        return repository.save(partner);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "")
-    public Iterable<Titulo> list( @RequestParam(value = "data", required = false) String data ) throws Exception{
+    public Iterable<Partner> list( @RequestParam(value = "data", required = false) String data ) throws Exception{
 
         return repository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    public Titulo get( @PathVariable("id") Long id ){
+    public Partner get( @PathVariable("id") Long id ){
 
         return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public Titulo update( @RequestBody @Valid Titulo Titulo ){
+    public Partner update( @RequestBody @Valid Partner partner ){
 
-        return repository.save(Titulo);
+        return repository.save(partner);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")

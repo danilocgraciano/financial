@@ -12,38 +12,38 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.financial.model.Parceiro;
-import br.com.financial.repository.ParceiroRepository;
+import br.com.financial.model.Invoice;
+import br.com.financial.repository.InvoiceRepository;
 
 @RestController
-@RequestMapping("/api/parceiros")
-public class ParceiroController extends BaseController{
+@RequestMapping("/api/invoices")
+public class InvoiceController extends BaseController{
 
     @Autowired
-    ParceiroRepository repository;
+    InvoiceRepository repository;
 
     @RequestMapping(method = RequestMethod.POST)
-    public Parceiro create( @RequestBody @Valid Parceiro parceiro ) throws Exception{
+    public Invoice create( @RequestBody @Valid Invoice invoice ) throws Exception{
 
-        return repository.save(parceiro);
+        return repository.save(invoice);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "")
-    public Iterable<Parceiro> list( @RequestParam(value = "data", required = false) String data ) throws Exception{
+    public Iterable<Invoice> list( @RequestParam(value = "data", required = false) String data ) throws Exception{
 
         return repository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    public Parceiro get( @PathVariable("id") Long id ){
+    public Invoice get( @PathVariable("id") Long id ){
 
         return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public Parceiro update( @RequestBody @Valid Parceiro parceiro ){
+    public Invoice update( @RequestBody @Valid Invoice invoice ){
 
-        return repository.save(parceiro);
+        return repository.save(invoice);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")

@@ -14,59 +14,55 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.financial.model.Usuario;
-import br.com.financial.repository.UsuarioRepository;
+import br.com.financial.model.Type;
+import br.com.financial.repository.TypeRepository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
-@RequestMapping("/api/usuarios")
-public class UsuarioController extends BaseController{
+@RequestMapping("/api/types")
+public class TypeController extends BaseController{
 
     @Autowired
-    UsuarioRepository repository;
+    TypeRepository repository;
 
     @RequestMapping(method = RequestMethod.POST)
-    public Usuario create( @RequestBody @Valid Usuario usuario ) throws Exception{
+    public Type create( @RequestBody @Valid Type type ) throws Exception{
 
-        List<Usuario> list = repository.findByEmail(usuario.getEmail());
+        List<Type> list = repository.findByDescription(type.getDescription());
         if ( !list.isEmpty() ){
-            throw new Exception("Email (" + usuario.getEmail() + ") já utilizado!");
+            throw new Exception("Description (" + type.getDescription() + ") already used!");
         }
 
-        return repository.save(usuario);
+        return repository.save(type);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "")
-    public Iterable<Usuario> list( @RequestParam(value = "data", required = false) String data ) throws Exception{
+    public Iterable<Type> list( @RequestParam(value = "data", required = false) String data ) throws Exception{
 
         if ( data != null ){
             ObjectMapper mapper = new ObjectMapper();
-            Usuario user = mapper.readValue(data, Usuario.class);
+            Type type = mapper.readValue(data, Type.class);
 
-            if ( user.getEmail() != null && user.getSenha() != null ){
-                return repository.findByEmailAndSenha(user.getEmail(), user.getSenha());
+            if ( type.getDescription() != null ){
+                return repository.findByDescription(type.getDescription());
             }
 
-            if ( user.getEmail() != null ){
-                return repository.findByEmail(user.getEmail());
-            }
         }
         return repository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    public Usuario get( @PathVariable("id") Long id ){
+    public Type get( @PathVariable("id") Long id ){
 
         return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public Usuario update( @RequestBody @Valid Usuario usuario ){
+    public Type update( @RequestBody @Valid Type type ){
 
-        return repository.save(usuario);
+        return repository.save(type);
     }
-
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public ResponseEntity<Boolean> delete( @PathVariable("id") Long id ){
 

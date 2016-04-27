@@ -1,0 +1,27 @@
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<div align="center">
+	<form name="userForm" ng-controller="LoginController" ng-submit="userForm.$valid && newUser()" method="POST">
+	
+		<p>
+			<input type="text" name="id" ng-model="user.id" ng-show="false"/>
+		</p>
+		<p>
+			<input type="text" name="name" placeholder="Name" ng-model="user.name" required />
+		</p>
+		<p>
+			<input type="email" name="email" placeholder="Email" ng-model="user.email" required />
+		</p>
+		<p>
+			<input type="password" name="password" placeholder="Password" ng-model="user.password" required />
+		</p>
+		<p>
+			<input type="submit" value="Save"/>
+		</p>
+	
+	</form>
+</div>

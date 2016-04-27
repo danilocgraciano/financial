@@ -1,0 +1,17 @@
+<div ng-controller="UserListController">
+	<a href="#/users/0">New</a>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<th>Name</th>
+			<th>Email</th>
+			<th></th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="data in users">
+				<td><a href="#/users/{{data.id}}">{{data.name}}</a></td>
+				<td>{{data.email}}</td>
+				<td><button ng-click="remove(data)">Delete</button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
