@@ -1,0 +1,25 @@
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<div align="center">
+	<form name="typeForm" ng-controller="TypeFormController" ng-submit="typeForm.$valid && submit()" method="POST">
+	
+		<p>
+			<input type="text" name="id" ng-model="type.id" ng-show="false"/>
+		</p>
+		<p>
+			<input type="text" name="description" placeholder="Description" ng-model="type.description" required />
+		</p>
+		<p>
+			<input type="radio" name="type" placeholder="Type" ng-model="type.type" value="1" required />Recipe
+			<input type="radio" name="type" placeholder="Type" ng-model="type.type" value="0" required />Expense
+		</p>
+		<p>
+			<input type="submit" value="Save"/>
+		</p>
+	
+	</form>
+</div>
