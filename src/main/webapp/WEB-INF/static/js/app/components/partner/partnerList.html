@@ -1,0 +1,21 @@
+<div ng-controller="PartnerListController">
+	<a href="#/partners/0">New</a>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<th>Name</th>
+			<th>CNPJ/CPF</th>
+			<th>Email</th>
+			<th>Phone</th>
+			<th></th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="data in partners">
+				<td><a href="#/partners/{{data.id}}">{{data.name}}</a></td>
+				<td>{{data.cpfCnpj}}</td>
+				<td>{{data.email}}</td>
+				<td>{{data.phone}}</td>
+				<td><button ng-click="remove(data)">Delete</button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

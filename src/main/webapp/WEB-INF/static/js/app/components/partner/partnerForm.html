@@ -1,0 +1,83 @@
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<div align="center">
+	<form name="partnerForm" ng-controller="PartnerFormController" ng-submit="partnerForm.$valid && submit()" method="POST">
+	
+		<p>
+			<input type="text" name="id" ng-model="partner.id" ng-show="false"/>
+		</p>
+		<p>
+			<input type="text" name="name" placeholder="Name" ng-model="partner.name" required />
+		</p>
+		<p>
+			<input type="email" name="email" placeholder="Email" ng-model="partner.email" required />
+		</p>
+		<p>
+			<input type="text" name="cpfCnpj" placeholder="CPF/CNPJ" ng-model="partner.cpfCnpj" />
+		</p>
+		<p>
+			<input type="text" name="phone" placeholder="Phone" ng-model="partner.phone" />
+		</p>
+		<p>
+			<input type="text" name="zipCode" placeholder="ZipCode" ng-model="partner.zipCode" />
+		</p>
+		<p>
+			<input type="text" name="address" placeholder="Address" ng-model="partner.address" />
+		</p>
+		<p>
+			<input type="text" name="number" placeholder="Number" ng-model="partner.number" />
+		</p>
+		<p>
+			<input type="text" name="complement" placeholder="Complement" ng-model="partner.complement" />
+		</p>
+		<p>
+			<input type="text" name="neighborhood" placeholder="Neighborhood" ng-model="partner.neighborhood" />
+		</p>
+		<p>
+			<input type="text" name="city" placeholder="City" ng-model="partner.city" />
+		</p>
+		<p>
+			<select name="state" id="state" ng-model="partner.state">
+      			<option value="">State</option>
+      			<option value="AC">Acre</option>
+      			<option value="AL">Alagoas</option>
+      			<option value="AP">Amap&aacute;</option>
+      			<option value="AM">Amazonas</option>
+      			<option value="BA">Bahia</option>
+      			<option value="CE">Ceara</option>
+      			<option value="DF">Distrito Federal</option>
+      			<option value="ES">Esp&iacute;rito Santo</option>
+      			<option value="GO">Goi&aacute;s</option>
+      			<option value="MA">Maranh&atilde;o</option>
+      			<option value="MT">Mato Grosso</option>
+      			<option value="MG">Minas Gerais</option>
+      			<option value="PA">Par&aacute;</option>
+      			<option value="PB">Para&iacute;ba</option>
+      			<option value="PR">Paran&aacute;</option>
+      			<option value="PE">Pernambuco</option>
+      			<option value="PI">Piau&iacute;</option>
+      			<option value="RJ">Rio de Janeiro</option>
+      			<option value="RN">Rio Gande do Norte</option>
+      			<option value="RS">Rio Gande do Sul</option>
+      			<option value="RO">Rond&ocirc;nia</option>
+      			<option value="RR">Roraima</option>
+      			<option value="SC">Santa Catarina</option>
+      			<option value="SP">S&atilde;o Paulo</option>
+      			<option value="SE">Segipe</option>
+      			<option value="TO">TOcantins</option>
+    		</select>
+		</p>
+		<p>
+			<input type="text" name="note" placeholder="Note" ng-model="partner.note" />
+		</p>
+		
+		<p>
+			<input type="submit" value="Save"/>
+		</p>
+	
+	</form>
+</div>

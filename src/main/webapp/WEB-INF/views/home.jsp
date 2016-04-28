@@ -7,6 +7,7 @@
 <script src="static/js/app/components/login/login.js"></script>
 <script src="static/js/app/components/user/user.js"></script>
 <script src="static/js/app/components/type/type.js"></script>
+<script src="static/js/app/components/partner/partner.js"></script>
 <script src="static/js/app/app.module.js"></script>
 
 <title>.:FINANCIAL:.</title>
