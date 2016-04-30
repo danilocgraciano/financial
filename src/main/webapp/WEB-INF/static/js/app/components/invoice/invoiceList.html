@@ -1,0 +1,21 @@
+<div ng-controller="InvoiceListController">
+	<a href="#/invoices/0">New</a>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<th>Value</th>
+			<th>Partner</th>
+			<th>Due Date</th>
+			<th>Payment Form</th>
+			<th></th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="data in invoices">
+				<td><a href="#/invoices/{{data.id}}">{{data.value}}</a></td>
+				<td><a href="#/partners/{{data.partner.id}}">{{data.partner.name}}</a></td>
+				<td>{{data.dueDate | date: 'dd/MM/yyyy'}}</td>
+				<td>{{data.paymentForm}}</td>
+				<td><button ng-click="remove(data)">Delete</button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -10,9 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Invoice {
@@ -21,11 +20,11 @@ public class Invoice {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotEmpty
+    @Min(0)
     @Column(nullable = false)
     private float value;
 
-    @NotEmpty
+    @NotNull
     @Column(nullable = false)
     @Temporal(value = TemporalType.DATE)
     private Date dueDate;
@@ -43,99 +42,83 @@ public class Invoice {
 
     private byte[] receipt;
 
-    
     public Long getId(){
-    
+
         return id;
     }
 
-    
     public void setId( Long id ){
-    
+
         this.id = id;
     }
 
-    
     public float getValue(){
-    
+
         return value;
     }
 
-    
     public void setValue( float value ){
-    
+
         this.value = value;
     }
 
-    
     public Date getDueDate(){
-    
+
         return dueDate;
     }
 
-    
     public void setDueDate( Date dueDate ){
-    
+
         this.dueDate = dueDate;
     }
 
-    
     public Type getType(){
-    
+
         return type;
     }
 
-    
     public void setType( Type type ){
-    
+
         this.type = type;
     }
 
-    
     public Partner getPartner(){
-    
+
         return partner;
     }
 
-    
     public void setPartner( Partner partner ){
-    
+
         this.partner = partner;
     }
 
-    
     public String getPaymentForm(){
-    
+
         return paymentForm;
     }
 
-    
     public void setPaymentForm( String paymentForm ){
-    
+
         this.paymentForm = paymentForm;
     }
 
-    
     public String getDescription(){
-    
+
         return description;
     }
 
-    
     public void setDescription( String description ){
-    
+
         this.description = description;
     }
 
-    
     public byte[] getReceipt(){
-    
+
         return receipt;
     }
 
-    
     public void setReceipt( byte[] receipt ){
-    
+
         this.receipt = receipt;
     }
 

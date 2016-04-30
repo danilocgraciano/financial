@@ -1,0 +1,39 @@
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<div align="center">
+	<form name="invoiceForm" ng-controller="InvoiceFormController" ng-submit="invoiceForm.$valid && submit()" method="POST">
+	
+		<p>
+			<input type="text" name="id" ng-model="invoice.id" ng-show="false"/>
+		</p>
+		<p>
+			<input type="number" step="0.01" name="value" placeholder="Value" ng-model="invoice.value" min="0" required/>
+		</p>
+		<p>
+			<input type="text" name="dueDate" ng-model="invoice.dueDate" required/>
+		</p>
+		<p>
+			<select name="invoice.type" ng-model="invoice.type" ng-options="data.description for data in types track by data.id"></select>
+		</p>
+		<p>
+			<select name="invoice.partner" ng-model="invoice.partner" ng-options="data.name for data in partners track by data.id"></select>
+		</p>
+		<p>
+			<input type="text" name="paymentForm"  placeholder="Payment Form" ng-model="invoice.paymentForm"/>
+		</p>
+		<p>
+			<input type="text" name="description" placeholder="Description" ng-model="invoice.description"/>
+		</p>
+		<p>
+			<input type="file" name="receipt" placeholder="Receipt" ng-model="invoice.receipt"/>
+		</p>
+		<p>
+			<input type="submit" value="Save"/>
+		</p>
+	
+	</form>
+</div>
