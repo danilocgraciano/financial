@@ -9,8 +9,27 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @Entity
 public class Type {
+
+    public Type() {
+
+    }
+
+    @JsonCreator
+    public Type( String jsonData ) throws Exception {
+
+        ObjectMapper mapper = new ObjectMapper();
+        Type e = mapper.readValue(jsonData, this.getClass());
+
+        this.setDescription(e.getDescription());
+        this.setId(e.getId());
+        this.setType(e.getType());
+
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
