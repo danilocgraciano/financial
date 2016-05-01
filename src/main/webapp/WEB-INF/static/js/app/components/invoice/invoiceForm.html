@@ -5,6 +5,7 @@
 </br>
 </br>
 <div align="center">
+   
 	<form name="invoiceForm" ng-controller="InvoiceFormController" ng-submit="invoiceForm.$valid && submit()" method="POST">
 	
 		<p>
@@ -14,7 +15,9 @@
 			<input type="number" step="0.01" name="value" placeholder="Value" ng-model="invoice.value" min="0" required/>
 		</p>
 		<p>
-			<input type="text" name="dueDate" ng-model="invoice.dueDate" required/>
+			<input type="text" placeholder="{{invoice.dueDate}}" name="dueDate" ng-model="invoice.dueDate" 
+			uib-datepicker-popup="dd/MM/yyyy" is-open="open.start" ng-click="open.start = true"
+			close-text="Fechar" clear-text="Limpar" current-text="Hoje" />
 		</p>
 		<p>
 			<select name="invoice.type" ng-model="invoice.type" ng-options="data.description for data in types track by data.id"></select>
