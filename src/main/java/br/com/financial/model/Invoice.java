@@ -13,6 +13,10 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import br.com.financial.conf.CustomDateSerializer;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 @Entity
 public class Invoice {
 
@@ -27,6 +31,7 @@ public class Invoice {
     @NotNull
     @Column(nullable = false)
     @Temporal(value = TemporalType.DATE)
+    @JsonSerialize(using=CustomDateSerializer.class)
     private Date dueDate;
 
     @OneToOne
