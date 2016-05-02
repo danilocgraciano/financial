@@ -41,7 +41,7 @@
     document.write('<script type="text/javascript" charset="UTF-8" src="' + path + 'angular-resource' + (!isDevelopment ? '.min' : '') + '.js"></script>');
     document.write('<script type="text/javascript" charset="UTF-8" src="' + path + 'angular-route' + (!isDevelopment ? '.min' : '') + '.js"></script>');
     document.write('<script type="text/javascript" charset="UTF-8" src="' + path + 'angular-locale_pt-br' + (!isDevelopment ? '.min' : '') + '.js"></script>');
-    document.write('<script type="text/javascript" charset="UTF-8" src="' + path + 'ui-bootstrap-tpls-1.3.2' + (!isDevelopment ? '.min' : '') + '.js"></script>');
+    document.write('<script type="text/javascript" charset="UTF-8" src="' + path + 'ui-bootstrap-tpls-1.0.3' + (!isDevelopment ? '.min' : '') + '.js"></script>');
     document.write('<script type="text/javascript" charset="UTF-8" src="' + path + 'jquery' + (!isDevelopment ? '.min' : '') + '.js"></script>');
     document.write('<link rel="stylesheet" href="' + pathCSS + 'bootstrap' + (!isDevelopment ? '.min' : '') + '.css">');
     document.write('<script type="text/javascript" charset="UTF-8" src="' + path + 'bootstrap' + (!isDevelopment ? '.min' : '') + '.js"></script>');
